@@ -29,6 +29,17 @@ export default function TelaProdutos({ aoLogout }: TelaProdutosProps) {
         } finally {
             setCarregandoProdutos(false);
         }
+        useEffect(() => {
+            if (termoBusca === '') {
+                setProdutosFiltrados(listaProdutos);
+            } else {
+                const produtosEncontrados = listaProdutos.filter(produto =>
+                    produto.title.toLowerCase().includes(termoBusca.toLowerCase()) ||
+                    produto.category.toLowerCase().includes(termoBusca.toLowerCase())
+                );
+                setProdutosFiltrados(produtosEncontrados);
+            }
+        }, [termoBusca, listaProdutos]);
  };
  carregarProdutos();
  }, [aoLogout]); 
@@ -111,15 +122,3 @@ borderRadius: 5, marginBottom: 15 },
     listaConteudo: { paddingBottom: 20 },
     mensagemErro: { textAlign: 'center', marginBottom: 20 },
 });
-
-useEffect(() => {
-    if (termoBusca === '') {
-        setProdutosFiltrados(listaProdutos);
-    } else {
-        const produtosEncontrados = listaProdutos.filter(produto =>
-            produto.title.toLowerCase().includes(termoBusca.toLowerCase()) ||
-            produto.category.toLowerCase().includes(termoBusca.toLowerCase())
-        );
-        setProdutosFiltrados(produtosEncontrados);
-    }
-}, [termoBusca, listaProdutos]);
