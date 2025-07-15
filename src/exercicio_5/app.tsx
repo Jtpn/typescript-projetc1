@@ -7,7 +7,6 @@ import api from './api/axiosConfig';
 
 export default function App() {
     const [autenticado, setAutenticado] = useState<boolean | null>(null);
-   verificando
     const [carregandoInicial, setCarregandoInicial] = useState(true);
     useEffect(() => {
     const verificarAutenticacao = async () => {
@@ -21,8 +20,8 @@ export default function App() {
     setCarregandoInicial(false);
     };
     verificarAutenticacao();
-   logout forçado.
     }, []);
+
     const lidarComLogout = async () => {
     await removerToken();
     delete api.defaults.headers.common['Authorization']; 
