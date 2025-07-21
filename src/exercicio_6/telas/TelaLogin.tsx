@@ -1,4 +1,4 @@
-import Reatc, { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet }
 from 'react-native';
 import { realizarLogin } from '../servicos/servicoAutenticacao';
