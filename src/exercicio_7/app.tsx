@@ -6,6 +6,11 @@ import TelaLogin from './telas/TelaLogin';
 import TelaProdutos from './telas/TelaProdutos';
 import { obterToken,removerToken } from './servicos/servicoArmazenamento';
 import api from './api/axiosConfig';
+import Toast from 'react-native-toast-message';
+import TelaAdminProdutos from './src/telas/TelaAdminProdutos';
+import TelaEditarProduto from './src/telas/TelaEditarProduto';
+import TelaNovoProduto from './src/telas/TelaNovoProduto';
+
 
 const Pilha = createNativeStackNavigator();
 
@@ -68,3 +73,25 @@ const estilos = StyleSheet.create({
     },
 });
 
+<Stack.Screen
+  name="Busca"
+  component={TelaBuscaProdutos}
+  options={{ title: 'Buscar Produtos' }}
+/>
+
+export default function App() {
+    return (
+      <>
+        <NavigationContainer>
+          <Stack.Navigator>{/* suas rotas */}</Stack.Navigator>
+        </NavigationContainer>
+        <Toast />
+      </>
+    );
+  }
+
+
+
+<Stack.Screen name="AdminProdutos" component={TelaAdminProdutos} />
+<Stack.Screen name="EditarProduto" component={TelaEditarProduto} />
+<Stack.Screen name="NovoProduto" component={TelaNovoProduto} />

@@ -4,6 +4,17 @@ import { View, Text, FlatList, ActivityIndicator, StyleSheet, TextInput,
 TouchableOpacity, Image } from 'react-native';
 import { obterTodosProdutos } from '../servicos/servicoProdutos';
 import { ProdutoAPI } from '../tipos/api';
+import { useNavigation } from '@react-navigation/native';
+
+const TelaProdutos = () => {
+  const navigation = useNavigation();
+
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate('Busca')}>
+      <Text>Buscar</Text>
+    </TouchableOpacity>
+  );
+};
 
 interface TelaProdutosProps {
     aoLogout: () => void;
@@ -127,3 +138,17 @@ borderRadius: 5, marginBottom: 15 },
     listaConteudo: { paddingBottom: 20 },
     mensagemErro: { textAlign: 'center', marginBottom: 20 },
 });
+
+export default function TelaProdutos() {
+    const navigation = useNavigation();
+  
+    function navegarParaBusca() {
+      navigation.navigate('BuscaProdutos');
+    }
+  
+    return (
+      <TouchableOpacity onPress={navegarParaBusca}>
+        <Text>🔍 Buscar</Text>
+      </TouchableOpacity>
+    );
+  }
